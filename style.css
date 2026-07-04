@@ -43,16 +43,24 @@ main {
 
 .app-header h1 {
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--brand);
   letter-spacing: 0.02em;
 }
 
+.brand-logo {
+  display: block;
+  height: 28px;
+  width: auto;
+}
+
 .brand-accent {
   color: var(--text);
   font-weight: 400;
-  margin-left: 0.4em;
 }
 
 .header-site-info {
