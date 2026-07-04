@@ -1,0 +1,435 @@
+:root {
+  --bg: #141414;
+  --bg-raised: #1e1e1e;
+  --border: #333333;
+  --text: #ededed;
+  --text-dim: #a3a3a3;
+  --brand: #f1592b;
+  --go: #3ecf6a;
+  --nogo: #e5484d;
+  --outlook: #6b6b6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 1rem 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Header */
+
+.app-header {
+  padding: 1.25rem 1rem 1rem;
+  border-bottom: 1px solid var(--border);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--brand);
+  letter-spacing: 0.02em;
+}
+
+.brand-accent {
+  color: var(--text);
+  font-weight: 400;
+  margin-left: 0.4em;
+}
+
+.header-site-info {
+  margin: 0.4rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+/* Panel */
+
+.panel {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.field-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+label {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 0.6rem 0.7rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+/* Coordinates are typed or filled by geolocation, never incremented —
+   the spinner arrows just get in the way. */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input:focus {
+  outline: 2px solid var(--brand);
+  outline-offset: 1px;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: #141414;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--brand);
+  color: var(--brand);
+}
+
+.status-message {
+  font-size: 0.85rem;
+  min-height: 1.1em;
+}
+
+.status-message.status-error {
+  color: var(--nogo);
+}
+
+.status-message.status-info {
+  color: var(--text-dim);
+}
+
+/* Verdict banner */
+
+.verdict-banner {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--outlook);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+  text-align: left;
+}
+
+.verdict-hidden {
+  display: none;
+}
+
+.verdict-headline {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  color: var(--text-dim);
+  background: color-mix(in srgb, var(--outlook) 20%, transparent);
+}
+
+.verdict-sentence {
+  margin-top: 0.6rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.verdict-reason {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.verdict-note {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.verdict-go {
+  border-left-color: var(--go);
+}
+
+.verdict-go .verdict-headline,
+.verdict-go .verdict-sentence {
+  color: var(--go);
+}
+
+.verdict-go .verdict-headline {
+  background: color-mix(in srgb, var(--go) 20%, transparent);
+}
+
+.verdict-caution {
+  border-left-color: var(--brand);
+}
+
+.verdict-caution .verdict-headline,
+.verdict-caution .verdict-sentence {
+  color: var(--brand);
+}
+
+.verdict-caution .verdict-headline {
+  background: color-mix(in srgb, var(--brand) 20%, transparent);
+}
+
+.verdict-nogo {
+  border-left-color: var(--nogo);
+}
+
+.verdict-nogo .verdict-headline,
+.verdict-nogo .verdict-sentence {
+  color: var(--nogo);
+}
+
+.verdict-nogo .verdict-headline {
+  background: color-mix(in srgb, var(--nogo) 20%, transparent);
+}
+
+.verdict-outlook {
+  border-left-color: var(--outlook);
+}
+
+/* Section labels */
+
+.section-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  margin: 0 0 0.5rem;
+}
+
+/* Alerts */
+
+.alerts-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.alert-chip {
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.chip-nogo {
+  background: color-mix(in srgb, var(--nogo) 25%, var(--bg-raised));
+  color: var(--nogo);
+  border: 1px solid var(--nogo);
+}
+
+.chip-caution {
+  background: color-mix(in srgb, var(--brand) 25%, var(--bg-raised));
+  color: var(--brand);
+  border: 1px solid var(--brand);
+}
+
+/* Metric grid */
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+}
+
+.metric-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 0.8rem;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.metric-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 0.15rem;
+}
+
+.metric-sub {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-top: 0.15rem;
+}
+
+/* Advisory notes */
+
+.advisories-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.advisories-list li {
+  background: var(--bg-raised);
+  border: 1px solid var(--brand);
+  border-left-width: 4px;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+/* Hourly strip */
+
+.hourly-strip {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.hourly-point {
+  flex: 0 0 auto;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  text-align: center;
+  min-width: 4.5rem;
+}
+
+.hourly-point-target {
+  border-color: var(--brand);
+}
+
+.hourly-time {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.hourly-wind {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 0.2rem;
+}
+
+.hourly-unit {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+
+/* NWS supplement */
+
+.nws-supplement {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.nws-supplement p {
+  margin: 0.2rem 0;
+}
+
+/* Footer */
+
+.app-footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.app-footer p {
+  margin: 0.2rem 0;
+}
+
+.app-footer a {
+  color: var(--brand);
+}
+
+/* Larger screens */
+
+@media (min-width: 600px) {
+  .metric-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .panel {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+
+  .field-row {
+    flex: 1 1 100%;
+  }
+
+  .btn {
+    flex: 0 0 auto;
+  }
+
+  .status-message {
+    flex: 1 1 100%;
+  }
+}
